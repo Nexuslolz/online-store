@@ -1,7 +1,18 @@
 import React from 'react';
 
-const App = () => {
-  return <div>im here</div>;
+import Footer from './components/Footer/Footer';
+
+import Header from './components/Header/Header';
+import AppRouter from './utils/AppRouter';
+
+const App: React.FC = () => {
+  return (
+    <>
+      <Header />
+      <AppRouter />
+      <Footer />
+    </>
+  );
 };
 
 export default App;
