@@ -1,0 +1,32 @@
+@import '../../styles/variables.scss';
+
+.headerCart {
+  display: flex;
+  justify-content: flex-end;
+  color: black;
+}
+
+.headerCart__icon {
+  background-image: url('../../assets/ico/basket.svg');
+  width: 6vw;
+  max-width: 100px;
+  height: 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  position: relative;
+}
+.headerCart__amount {
+  background-color: rgba(255,255,255,.9);
+  box-shadow: inset 0 0 3px 2px $wrapColor, 0 0 2px 1px $wrapColor;
+  border-radius: 50%;
+  position: absolute;
+  top: 20%;
+  left: 39%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
