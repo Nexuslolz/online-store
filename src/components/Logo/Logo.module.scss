@@ -1,0 +1,25 @@
+.headerLogo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+
+.headerLogo__Img {
+  background-image: url('../../assets/ico/logo.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 6vw;
+  height: 100px;
+  max-width: 100px;
+}
+
+.headerLogo__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  height: 100px;
+}
