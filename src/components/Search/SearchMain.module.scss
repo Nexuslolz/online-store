@@ -1,0 +1,15 @@
+@import '../../styles/variables.scss';
+
+.headerSearch__wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 2%;
+}
+
+.search_active {
+  background-color: #f4f4f4a3;
+  transition: 0.2s;
+  border: 1px solid $activeColor !important;
+}
