@@ -11,3 +11,7 @@ export interface IProduct {
   thumbnail: string;
   title: string;
 }
+
+export interface IProducts {
+  products: IProduct[];
+}

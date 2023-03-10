@@ -1,0 +1,150 @@
+@import '../../../styles/variables.scss';
+
+.filterBox {
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 0 0 6px 5px #969696;
+  background-color: #373737;
+  color: #fff;
+  transition: 0.3s;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 2em;
+  padding: 1em 1.5em;
+}
+
+.filterBoxList__wrapper {
+  overflow: hidden;
+  width: 100%;
+  padding-top: 1em;
+}
+
+.filterBoxList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.35s;
+  transform: translate(0,-100%);
+}
+
+.filterBoxList_open {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(0,0);
+}
+
+.filterBoxList__input {
+  &:hover {
+    text-shadow: 0 0 5px $activeColor;
+    color: #bbffc9;
+  }
+}
+
+.filterBoxList__input:hover + .filterBoxList__value {
+  color: $activeColor;
+}
+
+.filterBoxList__value {
+  transition: 0.2s;
+}
+
+.filterBoxList__item {
+  margin-bottom: 1.5em;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  transition: 0.2s;
+}
+
+.filter__label {
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.filterBox__headerWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0.5em;
+}
+
+.filterBoxList__wrapper {
+  max-height: 1px;
+  transition: max-height 0.35s ease-in-out;
+}
+.filterBoxList__wrapper_open {
+  max-height: 1000px;
+  overflow: hidden;
+  transition: max-height 0.35s ease-in-out;
+}
+
+.filterBox__header {
+  margin: 0;
+  width: 70%;
+  font-weight: normal;
+}
+
+.filterBox__headerBtn {
+  width: 2vw;
+  height: 2vw;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: white;
+  transform: rotate(90deg);
+  transition: 0.15s;
+
+  svg {
+    g {
+      transition: 0.2s;
+    }
+  }
+
+  &:hover {
+    opacity: 0.8;
+    svg {
+      g {
+        fill: $activeColor;
+      }
+    }
+  }
+}
+
+.filterBox__headerBtn_open {
+  transform: rotate(270deg);
+}
+
+.filter__input {
+  visibility: hidden;
+  margin-right: 1.5em;
+}
+
+.filter__input + .filter__label::before {
+  @extend %element;
+  top: -15%;
+  left: 0;
+  background-color: #fff;
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+}
+
+.filter__input:checked + .filter__label::after {
+  @extend %element;
+  background-image: url('../../../assets/ico/galochka.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  top: 1%;
+  left: 1.5%;
+}

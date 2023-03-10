@@ -1,0 +1,23 @@
+.mainContainer__cardList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  gap: 5%;
+  row-gap: 3em;
+}
+
+.mainContainer__cardList_list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.mainContainer__cardList_list_loading,
+.styles.mainContainer__cardList_loading {
+  height: 100vh !important;
+}

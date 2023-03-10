@@ -1,2 +1,22 @@
-$activeColor: rgb(92, 231, 122);
-$wrapColor: #333;
+$activeColor: #5ce77a;
+$wrapColor: #3c3c3c;
+$bgFieldColor: #f4f4f4;
+
+%ShowBtnPanel {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(1);
+  }
+}
+
+%element {
+  content: '';
+  position: absolute;
+}

@@ -1,0 +1,54 @@
+@import '../../../styles/variables.scss';
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.mainContainer__panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 6px 5px #969696;
+  background-color: $wrapColor;
+  color: #fff;
+  transition: 0.3s;
+  color: white;
+  height: 100%;
+  padding: 0.7em 1em;
+  margin-bottom: 2em;
+}
+
+.btn__bigger {
+  background-image: url('../../../assets/ico/bigger.svg');
+  @extend %ShowBtnPanel;
+}
+
+.btn__smaller {
+  background-image: url('../../../assets/ico/smaller.svg');
+  @extend %ShowBtnPanel;
+}
+
+.showBtn__panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10%;
+  width: 10%;
+  justify-content: flex-end;
+}
+
+.mainContainer__text {
+  width: 9vw;
+}
+
+.found {
+  visibility: visible;
+}
+.no {
+  visibility: hidden;
+}

@@ -1,0 +1,18 @@
+.filterRange {
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 0 0 6px 5px #969696;
+  background-color: #373737;
+  color: #fff;
+  transition: 0.3s;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 2em;
+  padding: 1em 1.5em;
+}
+
+.filterRange__header {
+  font-weight: normal;
+  margin-bottom: 1em;
+}
