@@ -1,0 +1,15 @@
+@import '../../../../../styles/variables.scss';
+
+.mainContainer__showBtn {
+  border: none;
+  width: 2vw;
+  height: 2vw;
+  background-color: $bgFieldColor;
+  border-radius: 5px;
+  transition: 0.2s;
+  cursor: pointer;
+  max-width: 40px;
+  max-height: 40px;
+  min-width: 25px;
+  min-height: 25px;
+}
