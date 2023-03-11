@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import { productAPI } from './services/productService.api';
+import { cartSlice } from './slices/cartSlice';
 import { listSlice } from './slices/listSlice';
 import { totalSlice } from './slices/totalSlice';
 
@@ -8,6 +9,7 @@ const rootReducer = combineReducers({
   [productAPI.reducerPath]: productAPI.reducer,
   list: listSlice.reducer,
   totalFound: totalSlice.reducer,
+  cart: cartSlice.reducer,
 });
 
 export const setupStore = () => {
