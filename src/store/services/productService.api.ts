@@ -15,7 +15,16 @@ export const productAPI = createApi({
         },
       }),
     }),
+
+    fetchDifiniteProduct: build.query<IProducts, string>({
+      query: (q: string) => ({
+        url: `${API.PRODUCT}/${API.SEARCH}`,
+        params: {
+          q: q,
+        },
+      }),
+    }),
   }),
 });
 
-export const { useFetchProductsQuery } = productAPI;
+export const { useFetchProductsQuery, useLazyFetchDifiniteProductQuery } = productAPI;
