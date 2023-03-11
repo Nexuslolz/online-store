@@ -17,6 +17,7 @@ const CardList = () => {
   const isList = useSelector(getIsList);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(totalSlice.actions.setAmount(String(data?.products.length)));
   }, [data, dispatch]);
@@ -33,6 +34,11 @@ const CardList = () => {
           : styles.mainContainer__cardList
       }
     >
+      {/* {error && (
+        <h1 className={styles.mainContainer__error}>
+          Error has occured, {error.error}, {error.status}
+        </h1>
+      )} */}
       {error && <Loader />}
       {isLoading ? (
         <Loader />

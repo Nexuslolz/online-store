@@ -50,6 +50,17 @@
     border: none;
     font-weight: bold;
   }
+
+  &_add {
+    background-color: #fff;
+    color: $wrapColor;
+    font-weight: bold;
+
+    &:hover {
+      border: 1px solid $wrapColor;
+      background-color: #ff8f8f;
+    }
+  }
 }
 
 .card__content {
