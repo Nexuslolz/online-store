@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getTotalFound } from '../../../../../store/selectors/totalSelector';
@@ -18,13 +18,13 @@ const ControlPanel = () => {
 
   const dispatch = useDispatch();
 
-  const setCardGrid = () => {
+  const setCardGrid = useCallback(() => {
     dispatch(listSlice.actions.setList(false));
-  };
+  }, [dispatch]);
 
-  const setCardList = () => {
+  const setCardList = useCallback(() => {
     dispatch(listSlice.actions.setList(true));
-  };
+  }, [dispatch]);
 
   const totalFound = useSelector(getTotalFound);
 
