@@ -29,7 +29,7 @@ const Card: React.FC<ICard> = ({ ...props }: ICard) => {
     [dispatch, props.id],
   );
 
-  const isChecked = useSelector((state: RootState) => getIsCartList(state, String(props.id)));
+  const isChecked: boolean = useSelector((state: RootState) => getIsCartList(state, String(props.id)));
 
   return (
     <div id={String(props.id)} onClick={() => router(`/products/${props.id}`)} className={styles.card}>
