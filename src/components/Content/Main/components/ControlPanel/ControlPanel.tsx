@@ -26,7 +26,7 @@ const ControlPanel = () => {
     dispatch(listSlice.actions.setList(true));
   }, [dispatch]);
 
-  const totalFound = useSelector(getTotalFound);
+  const totalFound: string = useSelector(getTotalFound);
 
   return (
     <div className={styles.mainContainer__panel}>
