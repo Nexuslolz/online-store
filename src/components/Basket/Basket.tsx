@@ -7,7 +7,7 @@ import styles from './Basket.module.scss';
 import { getCartList } from '../../store/selectors/cartSelector';
 
 const Basket: React.FC = () => {
-  const cartList = useSelector(getCartList);
+  const cartList: string[] = useSelector(getCartList);
   const amount = cartList.length;
 
   return (
