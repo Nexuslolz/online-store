@@ -4,12 +4,14 @@ import { IProduct } from '../../models/models';
 
 interface ISearch {
   searchValue: IProduct[] | null;
-  error?: undefined;
+  loading: boolean;
+  error: string;
 }
 
 const initialState: ISearch = {
   searchValue: null,
-  error: undefined,
+  loading: false,
+  error: '',
 };
 
 export const searchSlice = createSlice({
@@ -21,6 +23,9 @@ export const searchSlice = createSlice({
     },
     resetSearchValue(state) {
       state.searchValue = null;
+    },
+    setSearchLoading(state, action: PayloadAction<boolean>) {
+      state.loading = action.payload;
     },
     setSearchError(state, action) {
       state.error = action.payload;
