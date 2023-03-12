@@ -12,7 +12,8 @@ const SearchMain = () => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [active, setActive] = useState<boolean>(false);
 
-  const [getProduct, { error }] = useLazyFetchDifiniteProductQuery();
+  const [getProduct] = useLazyFetchDifiniteProductQuery();
+
   const dispatch = useDispatch();
 
   const resetSearchValue = useCallback(() => {
@@ -24,11 +25,27 @@ const SearchMain = () => {
     event.preventDefault();
     setSearchValue(searchValue);
 
-    const data = await getProduct(searchValue);
-    if (!data.data) return;
-    dispatch(searchSlice.actions.setSearchValue(data.data.products));
-    if (error) {
-      dispatch(searchSlice.actions.setSearchError(error));
+    dispatch(searchSlice.actions.setSearchLoading(true));
+
+    try {
+      const data = await getProduct(searchValue);
+
+      if (!data.data) {
+        dispatch(searchSlice.actions.setSearchLoading(false));
+        dispatch(searchSlice.actions.setSearchError('products was not found. Please, try later'));
+
+        return;
+      }
+
+      dispatch(searchSlice.actions.setSearchValue(data.data.products));
+      dispatch(searchSlice.actions.setSearchLoading(false));
+    } catch (error) {
+      if (error instanceof Error) {
+        dispatch(searchSlice.actions.setSearchError(`Searching error ${error.message}`));
+      } else {
+        dispatch(searchSlice.actions.setSearchError(`Searching error ...`));
+      }
+      dispatch(searchSlice.actions.setSearchLoading(false));
     }
   };
 
