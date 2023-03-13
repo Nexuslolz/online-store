@@ -2,17 +2,22 @@ import React from 'react';
 
 import styles from './Select.module.scss';
 
+import { ISortingParams } from '../../utils/sorting';
+
 interface ISelect {
-  defaultValue: string;
-  options: string[];
+  params: ISortingParams[];
+  onChange(sort: string): void;
+  value: string;
 }
 
 const Select: React.FC<ISelect> = ({ ...props }: ISelect) => {
   return (
-    <select defaultValue={props.defaultValue} className={styles.select}>
-      <option disabled={true}>{props.defaultValue}</option>
-      {props.options.map((option, i) => (
-        <option key={i}>{option}</option>
+    <select value={props.value} onChange={(sort) => props.onChange(sort.target.value)} className={styles.select}>
+      <option disabled={true}>Sorting ...</option>
+      {props.params.map((param, i) => (
+        <option key={i} value={param.option}>
+          {param.option}
+        </option>
       ))}
     </select>
   );

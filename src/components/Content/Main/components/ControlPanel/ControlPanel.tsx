@@ -1,9 +1,13 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { getData } from '../../../../../store/selectors/dataSelector';
+
 import { getTotalFound } from '../../../../../store/selectors/totalSelector';
+import { dataSlice } from '../../../../../store/slices/dataSlice';
 
 import { listSlice } from '../../../../../store/slices/listSlice';
+import { sortingParams } from '../../../../../utils/sorting';
 
 import Basket from '../../../../Basket/Basket';
 
@@ -14,8 +18,6 @@ import styles from '../../MainContent.module.scss';
 import BtnShow from '../BtnShow/BtnShow';
 
 const ControlPanel = () => {
-  const options = ['Price ASC', 'Price DESC', 'Rating ASC', 'Rating DESC', 'Discount ASC', 'Discount DESC'];
-
   const dispatch = useDispatch();
 
   const setCardGrid = useCallback(() => {
@@ -28,9 +30,23 @@ const ControlPanel = () => {
 
   const totalFound: string = useSelector(getTotalFound);
 
+  const [selectedSort, setSelectedSort] = useState<string>('Sorting ...');
+  // const data = useSelector(getData);
+
+  const sortProducts = (sort: string) => {
+    setSelectedSort(sort);
+    // const result = [...data!];
+    // for (let key of sortingParams) {
+    //   if (key.option === sort) {
+    //     key.sort(result);
+    //   }
+    // }
+    // dispatch(dataSlice.actions.setData(result));
+  };
+
   return (
     <div className={styles.mainContainer__panel}>
-      <Select defaultValue='Sorting' options={options} />
+      <Select value={selectedSort} onChange={sortProducts} params={sortingParams} />
       <p className={styles.mainContainer__text}>
         Total found: <span>{totalFound}</span>
       </p>
