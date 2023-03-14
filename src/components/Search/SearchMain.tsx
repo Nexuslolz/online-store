@@ -2,6 +2,8 @@ import React, { useState, useCallback } from 'react';
 
 import { useDispatch } from 'react-redux';
 
+import { useNavigate } from 'react-router';
+
 import styles from './SearchMain.module.scss';
 
 import { useLazyFetchDifiniteProductQuery } from '../../store/services/productService.api';
@@ -15,6 +17,7 @@ const SearchMain = () => {
   const [getProduct] = useLazyFetchDifiniteProductQuery();
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const resetSearchValue = useCallback(() => {
     setSearchValue('');
@@ -22,6 +25,7 @@ const SearchMain = () => {
   }, [dispatch]);
 
   const submitHandler = async (event: React.FormEvent) => {
+    navigate('/');
     event.preventDefault();
     setSearchValue(searchValue);
 

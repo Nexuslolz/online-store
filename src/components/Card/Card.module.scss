@@ -33,36 +33,6 @@
   justify-content: center;
 }
 
-.card__btn {
-  background-color: $wrapColor;
-  border-radius: 5px;
-  color: #fff;
-  text-transform: uppercase;
-  transition: 0.2s;
-  width: 100%;
-  height: 40%;
-  cursor: pointer;
-  border: 1px solid $wrapColor;
-
-  &:hover {
-    color:$wrapColor;
-    background-color: $activeColor;
-    border: none;
-    font-weight: bold;
-  }
-
-  &_add {
-    background-color: #fff;
-    color: $wrapColor;
-    font-weight: bold;
-
-    &:hover {
-      border: 1px solid $wrapColor;
-      background-color: #ff8f8f;
-    }
-  }
-}
-
 .card__content {
   width: 100%;
   height: 30%;

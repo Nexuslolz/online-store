@@ -1,0 +1,116 @@
+@import '../../../../../styles/variables.scss';
+
+.buyForm__wrapper {
+position: fixed;
+top: 0;
+left: 0;
+width: 0;
+height: 0;
+background-color: transparent;
+}
+
+.buyForm__wrapper_active {
+  width: 100vw;
+  height: 100vh;
+  background-color: #3333335b;
+}
+
+.buyForm {
+  visibility: hidden;
+  opacity: 0;
+  transform: 0.2s;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+  height: 45vh;
+  max-height: 350px;
+  min-height: 300px;
+  z-index: 55;
+  width: max-content;
+  border-radius: 10px;
+  box-shadow: 0 0 6px 5px #969696;
+  background-color: #373737;
+  color: #fff;
+  transition: 0.2s;
+
+  @media(max-width: 900px) {
+    height: auto;
+    max-height: max-content;
+  }
+}
+
+.buyForm__infoWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0.5em;
+
+  @media(max-width: 900px) {
+    flex-direction: column;
+  }
+}
+
+.buyForm_active {
+  transform: translate(-50%, -50%);
+  visibility: visible;
+  opacity: 1;
+}
+
+.buyForm__info {
+  width: 90%;
+  padding: 0;
+  margin: 0 1vw;
+  text-align: center;
+
+  @media(max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.buyForm__btn {
+  width: 60%;
+  height: 12%;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: 0.2s;
+  cursor: pointer;
+  background-color: $activeColor;
+  border: none;
+  color:$wrapColor;
+  font-weight: bold;
+
+
+  &:hover {
+    background-color: $wrapColor;
+    border: 1px solid $bgFieldColor;
+    color: #fff;
+  }
+}
+
+.inputActive {
+  background-color: #f4f4f4a3;
+  transition: 0.2s;
+  border: 1px solid $activeColor !important;
+}
+
+.buyForm__cardImg {
+  right: 15%;
+  position: absolute;
+  width: 15%;
+  top: 20%;
+  height: 60%;
+}
+
+.buyForm__validateError {
+  background-color: #ff8f8f !important;
+  border: transparent;
+}

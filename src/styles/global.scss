@@ -12,6 +12,10 @@ html {
   font-size: 16px;
   max-width: 1680px;
   margin: 0 auto;
+
+  @media(max-width: 600px) {
+    font-size: 0.7em;
+  }
 }
 
 body {

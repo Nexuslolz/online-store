@@ -23,9 +23,9 @@ const LazyLoader: React.FC<ILazyLoader> = (props: ILazyLoader) => {
   }, []);
 
   return (
-    <div className={styles.loader__wrapper}>
+    <div className={`${styles.loader__wrapper} ${className}`}>
       {isLoading && <CardLoader />}
-      <img className={className} ref={imgRef} src={src} alt={alt} />
+      <img ref={imgRef} src={src} alt={alt} />
     </div>
   );
 };

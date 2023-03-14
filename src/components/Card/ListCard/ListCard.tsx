@@ -7,6 +7,7 @@ import styles from './ListCard.module.scss';
 import { getIsCartList } from '../../../store/selectors/cartSelector';
 import { cartSlice } from '../../../store/slices/cartSlice';
 import { RootState } from '../../../store/store';
+import Button from '../../Button/Button';
 import LazyLoader from '../../Loader/LazyLoader/LazyLoader';
 
 interface ICard {
@@ -16,6 +17,11 @@ interface ICard {
   thumbnail: string;
   id: number;
   description: string;
+  brand?: string;
+  category?: string;
+  images?: string[];
+  rating?: number;
+  stock?: number;
 }
 
 const ListCard: React.FC<ICard> = ({ ...props }: ICard) => {
@@ -47,9 +53,7 @@ const ListCard: React.FC<ICard> = ({ ...props }: ICard) => {
           </span>{' '}
           / <span className={styles.card__oldPrice}>{props.price}$</span>
         </div>
-        <button onClick={addToCart} className={`${styles.card__btn} ${isChecked ? styles.card__btn_add : ''}`}>
-          {isChecked ? 'Drop' : 'Add to cart'}
-        </button>
+        <Button onClick={addToCart} isChecked={isChecked} />
       </div>
     </div>
   );
