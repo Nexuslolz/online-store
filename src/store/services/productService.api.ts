@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import * as API from '../../constants/API';
-import { IProducts } from '../../models/models';
+import { IProduct, IProducts } from '../../models/models';
 
 export const productAPI = createApi({
   reducerPath: 'productAPI',
@@ -16,6 +16,12 @@ export const productAPI = createApi({
       }),
     }),
 
+    fetchOneProduct: build.query<IProduct, string>({
+      query: (id: string) => ({
+        url: `${API.PRODUCT}/${id}`,
+      }),
+    }),
+
     fetchDifiniteProduct: build.query<IProducts, string>({
       query: (q: string) => ({
         url: `${API.PRODUCT}/${API.SEARCH}`,
@@ -27,4 +33,4 @@ export const productAPI = createApi({
   }),
 });
 
-export const { useFetchProductsQuery, useLazyFetchDifiniteProductQuery } = productAPI;
+export const { useFetchProductsQuery, useLazyFetchDifiniteProductQuery, useFetchOneProductQuery } = productAPI;
