@@ -16,6 +16,11 @@ interface ICard {
   thumbnail: string;
   id: number;
   description: string;
+  brand?: string;
+  category?: string;
+  images?: string[];
+  rating?: number;
+  stock?: number;
 }
 
 const ListCard: React.FC<ICard> = ({ ...props }: ICard) => {
