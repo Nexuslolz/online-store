@@ -42,6 +42,7 @@ background-color: transparent;
   @media(max-width: 900px) {
     height: auto;
     max-height: max-content;
+    min-width: 250px;
   }
 }
 
@@ -54,6 +55,8 @@ background-color: transparent;
 
   @media(max-width: 900px) {
     flex-direction: column;
+    min-width: 250px;
+    align-items: center;
   }
 }
 
@@ -87,6 +90,8 @@ background-color: transparent;
   border: none;
   color:$wrapColor;
   font-weight: bold;
+
+  min-height: 30px;
 
 
   &:hover {
