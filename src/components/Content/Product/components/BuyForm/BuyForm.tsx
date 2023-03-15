@@ -92,7 +92,7 @@ const BuyForm: React.FC<IBuyForm> = ({ onClick, isOpen }: IBuyForm) => {
         setIsValidForm(true);
         setTimeout(() => {
           window.location.reload();
-        }, 3500);
+        }, 350000000);
       }
       return undefined;
     });

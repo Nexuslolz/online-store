@@ -39,10 +39,11 @@ background-color: transparent;
   color: #fff;
   transition: 0.2s;
 
-  @media(max-width: 900px) {
+  @media(max-width: 600px) {
     height: auto;
     max-height: max-content;
     min-width: 250px;
+    width: min-content;
   }
 }
 
