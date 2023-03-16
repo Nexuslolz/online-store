@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -27,16 +27,26 @@ interface ICard {
 const ListCard: React.FC<ICard> = ({ ...props }: ICard) => {
   const router = useNavigate();
   const dispatch = useDispatch();
+  const newPrice = Math.floor((props.price * (100 - props.discountPercentage)) / 100);
+
+  const productData = useMemo(() => {
+    return {
+      id: props.id,
+      value: 1,
+      price: newPrice,
+    };
+  }, [newPrice, props.id]);
 
   const addToCart = useCallback(
     (event: React.MouseEvent) => {
       event.stopPropagation();
-      dispatch(cartSlice.actions.toggleCart(String(props.id)));
+
+      dispatch(cartSlice.actions.toggleCart(productData));
     },
-    [dispatch, props.id],
+    [dispatch, productData],
   );
 
-  const isChecked = useSelector((state: RootState) => getIsCartList(state, String(props.id)));
+  const isChecked = useSelector((state: RootState) => getIsCartList(state, productData));
 
   return (
     <div id={String(props.id)} onClick={() => router(`/products/${props.id}`)} className={styles.card}>
