@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,21 +19,41 @@ interface ICard {
 }
 
 const Card: React.FC<ICard> = ({ ...props }: ICard) => {
+  const newPrice = Math.floor((props.price * (100 - props.discountPercentage)) / 100);
+
   const router = useNavigate();
   const dispatch = useDispatch();
+
+  const productData = useMemo(() => {
+    return {
+      id: props.id,
+      value: 1,
+      price: newPrice,
+    };
+  }, [newPrice, props.id]);
 
   const addToCart = useCallback(
     (event: React.MouseEvent) => {
       event.stopPropagation();
-      dispatch(cartSlice.actions.toggleCart(String(props.id)));
+
+      dispatch(cartSlice.actions.toggleCart(productData));
     },
-    [dispatch, props.id],
+    [dispatch, productData],
   );
 
-  const isChecked: boolean = useSelector((state: RootState) => getIsCartList(state, String(props.id)));
+  const redirectToProduct = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+    router(`/products/${props.id}`);
+  };
+
+  const isChecked: boolean = useSelector((state: RootState) => getIsCartList(state, productData));
 
   return (
-    <div id={String(props.id)} onClick={() => router(`/products/${props.id}`)} className={styles.card}>
+    <div id={String(props.id)} onClick={redirectToProduct} className={styles.card}>
       <span className={styles.card__discount}>{Math.round(props.discountPercentage)}%</span>
       <div className={styles.card__imgWrapper}>
         <LazyLoader src={props.thumbnail} alt='product image' />
@@ -41,10 +61,8 @@ const Card: React.FC<ICard> = ({ ...props }: ICard) => {
       <div className={styles.card__content}>
         <h4 className={styles.card__header}>{props.title}</h4>
         <div className={styles.card__price}>
-          <span className={styles.card__newPrice}>
-            {Math.round((props.price * (100 - props.discountPercentage)) / 100)}$
-          </span>{' '}
-          / <span className={styles.card__oldPrice}>{props.price}$</span>
+          <span className={styles.card__newPrice}>{newPrice}$</span> /{' '}
+          <span className={styles.card__oldPrice}>{props.price}$</span>
         </div>
         <Button onClick={addToCart} isChecked={isChecked} />
       </div>
