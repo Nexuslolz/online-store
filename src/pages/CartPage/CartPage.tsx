@@ -1,7 +1,9 @@
 import React from 'react';
 
+import CartContentWrapper from '../../components/Content/Cart/CartContent';
+
 const CartPage: React.FC = () => {
-  return <div>Hello cart page</div>;
+  return <CartContentWrapper />;
 };
 
 export default CartPage;
