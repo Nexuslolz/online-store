@@ -1,0 +1,64 @@
+@import '../../styles/variables.scss';
+
+.contentSlider {
+  display: flex;
+  width: 7vw;
+  justify-content: space-around;
+  align-items: center;
+  min-width: 60px;
+  max-width: 80px;
+  margin-bottom: 5px;
+
+  @media(max-width: 600px) {
+    min-width: 50px;
+  }
+}
+
+.contentSlider__btn {
+  background-color: $wrapColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5vw;
+  height: 1.5vw;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+  min-width: 20px;
+  min-height: 20px;
+  font-size: 16px;
+
+  &:hover {
+    box-shadow: 0 0 5px 1px $activeColor;
+    color: $activeColor;
+  }
+
+  &:active {
+    transition: 0.1s;
+    opacity: 0.8;
+  }
+
+  @media(max-width: 900px) {
+    font-size: 13px;
+    min-width: 17px;
+    min-height: 17px;
+  }
+
+  @media(max-width: 600px) {
+    font-size: 9px;
+    min-width: 15px;
+    min-height: 15px;
+  }
+}
+
+.contentSlider__value {
+  font-size: 17px;
+
+  @media(max-width: 900px) {
+    font-size: 15px;
+  }
+  @media(max-width: 600px) {
+    font-size: 13px;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
@@ -23,30 +23,35 @@ interface IImageArr {
 }
 
 const ProductContent = () => {
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: 'smooth',
-  });
-
   const params = useParams();
-  const { data, isLoading, error } = useFetchOneProductQuery(String(params.id));
+  const { data, error } = useFetchOneProductQuery(String(params.id));
   const [loadingImg, setLoadingImg] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
+  const newPrice = Math.floor((data?.price! * (100 - data?.discountPercentage!)) / 100);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const [mainImage, setMainImage] = useState<string | undefined>(data?.thumbnail);
 
   const dispatch = useDispatch();
 
+  const productData = useMemo(() => {
+    return {
+      id: Number(params.id),
+      value: 1,
+      price: newPrice,
+    };
+  }, [newPrice, params.id]);
+
   const addToCart = useCallback(
     (event: React.MouseEvent) => {
       event.stopPropagation();
-      dispatch(cartSlice.actions.toggleCart(String(data?.id)));
+
+      dispatch(cartSlice.actions.toggleCart(productData));
     },
-    [dispatch, data?.id],
+    [dispatch, productData],
   );
 
-  const isChecked: boolean = useSelector((state: RootState) => getIsCartList(state, String(data?.id)));
+  const isChecked: boolean = useSelector((state: RootState) => getIsCartList(state, productData));
 
   if (!data) return null;
 
@@ -99,6 +104,10 @@ const ProductContent = () => {
     setIsOpen(false);
   };
 
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 350);
+
   return (
     <div className={styles.productPage}>
       <h1 className={styles.productPage__header}>{data.title}</h1>
@@ -142,10 +151,8 @@ const ProductContent = () => {
           </div>
           <div className={styles.productPage__buy}>
             <div className={styles.productPage__price}>
-              <span className={styles.card__newPrice}>
-                {Math.round((data.price * (100 - data.discountPercentage)) / 100)}$
-              </span>{' '}
-              / <span className={styles.card__oldPrice}>{data.price}$</span>{' '}
+              <span className={styles.card__newPrice}>{newPrice}$</span> /{' '}
+              <span className={styles.card__oldPrice}>{data.price}$</span>{' '}
             </div>
             <div className={styles.productPage__btns}>
               <Button onClick={addToCart} isChecked={isChecked} />

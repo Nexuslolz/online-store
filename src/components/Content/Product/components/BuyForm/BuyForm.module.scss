@@ -42,7 +42,11 @@ background-color: transparent;
   @media(max-width: 900px) {
     height: auto;
     max-height: max-content;
+  }
+
+  @media(max-width: 600px) {
     min-width: 250px;
+    width: min-content;
   }
 }
 

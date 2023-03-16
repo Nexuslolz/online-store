@@ -85,6 +85,11 @@
     font-weight: normal;
     min-width: 13px;
     min-height: 13px;
-    top: 32%
+    top: 32%;
+    left: 85%;
+  }
+
+  @media(max-width: 450px) {
+    left: 100%;
   }
 }
