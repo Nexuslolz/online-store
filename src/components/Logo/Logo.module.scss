@@ -6,14 +6,15 @@
   align-items: center;
   text-decoration: none;
   color: black;
+  text-transform: uppercase;
 
   &:hover {
     .headerLogo__Img {
-      transform: rotate(360deg);
+      transform: rotate(360deg) scale(1.2);
     }
     .headerLogo__header {
       text-shadow: 0 0 10px $activeColor;
-      transform: scale(1.1);
+      transform: scale(1.1) translateX(8px);
   }
 }
 }
