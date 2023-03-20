@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styles from './ArrowFilter.module.scss';
+
 interface IArrowFilter {
   fill: string;
   width: string;
@@ -9,6 +11,7 @@ interface IArrowFilter {
 const ArrowFilter: React.FC<IArrowFilter> = ({ ...props }: IArrowFilter) => {
   return (
     <svg
+      className={styles.arrowFilter}
       version='1.0'
       xmlns='http://www.w3.org/2000/svg'
       width={props.width}
