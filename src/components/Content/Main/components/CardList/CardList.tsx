@@ -27,7 +27,6 @@ const CardList: React.FC = () => {
   const [searchData, searchLoading, searchError] = useSelector(getSearchParams);
 
   const productData: IProduct[] | undefined = searchData ?? data?.products;
-
   return (
     <div
       className={

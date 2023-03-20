@@ -1,3 +1,5 @@
+@import '../../../../../styles/variables.scss';
+
 .mainContainer__cardList {
   display: flex;
   flex-direction: row;
@@ -8,6 +10,16 @@
   width: 100%;
   gap: 5%;
   row-gap: 3em;
+
+@media(max-width: 1000px) {
+  gap: 10%;
+  row-gap: 3em;
+}
+
+@media(max-width:$hideFilters-width) {
+  gap: 5%;
+  row-gap: 3em;
+}
 }
 
 .mainContainer__cardList_list {
