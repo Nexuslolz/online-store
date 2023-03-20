@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 .cartContent__wrapper {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -5,12 +7,12 @@
   gap: 15%;
   min-height: 100vh;
 
-  @media(max-width: 900px) {
+  @media(max-width: $desktop-width) {
     font-size: 0.7em;
   }
 
 
-  @media(max-width: 600px) {
+  @media(max-width: $tablet-width) {
     font-size: 11px;
     margin-top: 0;
     gap: 7%;
@@ -33,7 +35,7 @@
 .devide {
   display: none;
 
-  @media(max-width: 450px) {
+  @media(max-width: $mobile-width) {
     display: block;
     margin: 2em 0;
   }
