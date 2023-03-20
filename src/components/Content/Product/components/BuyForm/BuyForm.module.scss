@@ -39,12 +39,12 @@ background-color: transparent;
   color: #fff;
   transition: 0.2s;
 
-  @media(max-width: 900px) {
+  @media(max-width: $desktop-width) {
     height: auto;
     max-height: max-content;
   }
 
-  @media(max-width: 600px) {
+  @media(max-width: $tablet-width) {
     min-width: 250px;
     width: min-content;
   }
@@ -57,11 +57,15 @@ background-color: transparent;
   justify-content: center;
   padding: 0.5em;
 
-  @media(max-width: 900px) {
+  @media(max-width: $desktop-width) {
     flex-direction: column;
     min-width: 250px;
     align-items: center;
   }
+}
+
+.buyForm__header {
+  margin-bottom: 1em;
 }
 
 .buyForm_active {
@@ -76,7 +80,7 @@ background-color: transparent;
   margin: 0 1vw;
   text-align: center;
 
-  @media(max-width: 600px) {
+  @media(max-width: $tablet-width) {
     display: flex;
     flex-direction: column;
     align-items: center;

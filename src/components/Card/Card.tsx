@@ -64,7 +64,7 @@ const Card: React.FC<ICard> = ({ ...props }: ICard) => {
           <span className={styles.card__newPrice}>{newPrice}$</span> /{' '}
           <span className={styles.card__oldPrice}>{props.price}$</span>
         </div>
-        <Button onClick={addToCart} isChecked={isChecked} />
+        <Button onClick={addToCart} isChecked={isChecked} additionalClass={styles.card__btn} />
       </div>
     </div>
   );

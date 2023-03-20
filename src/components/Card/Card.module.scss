@@ -19,6 +19,14 @@
       transform: scale(1.1);
     }
   }
+
+  @media(max-width: 1070px) {
+    height: 300px;
+  }
+
+  @media(max-width:$hideFilters-width) {
+    height: 270px;
+  }
 }
 
 .card__imgWrapper {
@@ -41,10 +49,18 @@
   justify-content: space-between;
   align-items: center;
   color: black;
+
+  @media(max-width:$desktop-width) {
+    height: 35%;
+  }
 }
 
 .card__header {
   text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
 }
 
 .card__oldPrice {
@@ -67,4 +83,10 @@
   z-index: 5;
   color: black;
   border-bottom-left-radius: 10px;
+}
+
+.card__btn {
+  @media(max-width: $desktop-width) {
+    min-width: 100%;
+  }
 }
