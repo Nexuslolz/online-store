@@ -63,7 +63,7 @@ const ListCard: React.FC<ICard> = ({ ...props }: ICard) => {
           </span>{' '}
           / <span className={styles.card__oldPrice}>{props.price}$</span>
         </div>
-        <Button onClick={addToCart} isChecked={isChecked} />
+        <Button additionalClass={styles.cardList__btn} onClick={addToCart} isChecked={isChecked} />
       </div>
     </div>
   );
