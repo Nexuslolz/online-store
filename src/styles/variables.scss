@@ -24,4 +24,16 @@ $bgFieldColor: #f4f4f4;
 $desktop-width: 900px;
 $tablet-width: 600px;
 $mobile-width: 450px;
-$hideFilters-width: 800px
+$hideFilters-width: 800px;
+
+%scrollThumb {
+  background-color: $wrapColor;
+  border-radius: 5px;
+  width: 0.1vw;
+}
+
+%scrollBar {
+  width: 0.3vw;
+  background-color: $activeColor;
+  border-radius: 5px;
+}
