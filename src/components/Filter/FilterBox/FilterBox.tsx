@@ -44,9 +44,9 @@ const FilterBox: React.FC<IFilter> = ({ ...props }: IFilter) => {
                   {option}
                 </label>
               </div>
-              <div className={styles.filterBoxList__value}>
+              {/* <div className={styles.filterBoxList__value}>
                 <span>15</span> / <span>15</span>
-              </div>
+              </div> */}
             </li>
           ))}
         </ul>
