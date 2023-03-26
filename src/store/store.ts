@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import { productAPI } from './services/productService.api';
 import { cartSlice } from './slices/cartSlice';
+import { dataSlice } from './slices/dataSlice';
 import { listSlice } from './slices/listSlice';
 import { menuSlice } from './slices/menuSlice';
 import { searchSlice } from './slices/searchSlice';
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   cart: cartSlice.reducer,
   search: searchSlice.reducer,
   menu: menuSlice.reducer,
+  data: dataSlice.reducer,
 });
 
 export const setupStore = () => {
