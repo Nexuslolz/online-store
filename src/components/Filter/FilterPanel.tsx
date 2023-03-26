@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -57,6 +57,7 @@ const FilterPanel: React.FC = () => {
   let num = 1230;
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     num += +priceMaxValue;
   }, [priceMaxValue]);
 
