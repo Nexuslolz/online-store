@@ -13,9 +13,18 @@
   border-radius: 5px;
   border: 1px solid #ccc;
   min-width: 220px;
+  width: 100%;
 
-  @media (max-width: 1100px) {
-    width: 20vw;
+  @media(max-width: $desktop-width) {
+    min-width: 190px;
+  }
+
+  @media(max-width: $tablet-width) {
+    padding: 0.15em 0;
+    margin: 0;
+    min-width: 150px;
+    font-size: 12px;
+    height: 24px;
   }
 
   &::before {
@@ -34,13 +43,17 @@
     background-size: contain;
 
     opacity: 0.4;
+
+    @media(max-width: $tablet-width) {
+      display: none;
+    }
   }
 
   &__input {
     flex-grow: 1;
 
     padding-left: 30px;
-
+    width: 80%;
     font: inherit;
 
     border: none;
@@ -49,6 +62,10 @@
 
     @media (max-width: 1100px) {
       width: 50%;
+    }
+
+    @media(max-width: $tablet-width) {
+      padding-left: 10px;
     }
   }
 
@@ -70,6 +87,16 @@
       cursor: pointer;
       opacity: 1;
     }
+
+    @media(max-width: $tablet-width) {
+      background-size: 70%;
+    }
+
+    @media(max-width: $mobile-width) {
+      margin: auto 0px;
+      background-size: 65%;
+
+    }
   }
 
   &__find {
@@ -85,10 +112,15 @@
       cursor: pointer;
       opacity: 1;
     }
+
+    @media(max-width:$tablet-width) {
+      padding: 0 3px;
+    }
   }
 
   &__hidden {
     opacity: 0;
     visibility: hidden;
   }
+
 }

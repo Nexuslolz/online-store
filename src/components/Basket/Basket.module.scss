@@ -17,7 +17,7 @@
   max-width: 100px;
   max-height: 40px;
   min-width: 70px;
-  min-height: 25px;
+  min-height: 30px;
 
   &:hover {
     box-shadow: 0 0 5px 1px $activeColor;
@@ -28,6 +28,13 @@
 
   &:active {
     transform: scale(1);
+  }
+
+  @media(max-width: $tablet-width) {
+    min-height: 20px;
+    min-width: 45px;
+    height: 3vw;
+    height: 24px;
   }
 }
 
@@ -47,6 +54,9 @@
   min-width: 25px;
   min-height: 25px;
 
+  @media(max-width: $tablet-width) {
+    background-size: 55%;
+  }
 }
 .headerCart__amount {
   background-color: rgba(255,255,255,0.9);
@@ -69,4 +79,21 @@
   max-height: 22px;
   font-size: 14px;
   transition: 0.2s;
+  min-width: 20px;
+  min-height: 20px;
+
+  @media(max-width: $tablet-width) {
+    font-size: 8px;
+    font-weight: normal;
+    min-width: 13px;
+    min-height: 13px;
+    top: 32%;
+    left: 85%;
+    border-radius: 3px;
+    left: 85%;
+  }
+
+  @media(max-width: $mobile-width) {
+    left: 100%;
+  }
 }

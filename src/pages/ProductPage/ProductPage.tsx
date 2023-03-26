@@ -1,7 +1,9 @@
 import React from 'react';
 
+import ProductContent from '../../components/Content/Product/ProductContent';
+
 const ProductPage: React.FC = () => {
-  return <div>Hello product page</div>;
+  return <ProductContent />;
 };
 
 export default ProductPage;

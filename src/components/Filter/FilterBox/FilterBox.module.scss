@@ -12,6 +12,10 @@
   width: 100%;
   margin-top: 2em;
   padding: 1em 1.5em;
+
+  @media(max-width: $desktop-width) {
+    padding: 1em;
+  }
 }
 
 .filterBoxList__wrapper {
@@ -38,6 +42,15 @@
 }
 
 .filterBoxList__input {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 70%;
+
+  @media(max-width: 1090px){
+    width: 100%;
+  }
+
   &:hover {
     text-shadow: 0 0 5px $activeColor;
     color: #bbffc9;
@@ -50,6 +63,11 @@
 
 .filterBoxList__value {
   transition: 0.2s;
+  padding-right: 0.5em;
+
+  @media(max-width: 1090px) {
+    display: none;
+  }
 }
 
 .filterBoxList__item {
@@ -61,6 +79,18 @@
   justify-content: space-between;
   width: 100%;
   transition: 0.2s;
+
+  @media(max-width: 1200px) {
+    font-size: 14px;
+  }
+
+  @media(max-width: $tablet-width) {
+    font-size: 12px;
+  }
+
+  @media(max-width: $mobile-width) {
+    font-size: 11px;
+  }
 }
 
 .filter__label {
@@ -81,16 +111,46 @@
   max-height: 1px;
   transition: max-height 0.35s ease-in-out;
 }
+
 .filterBoxList__wrapper_open {
-  max-height: 1000px;
-  overflow: hidden;
+  max-height: 180px;
+  overflow-y: scroll;
   transition: max-height 0.35s ease-in-out;
+
+  &::-webkit-scrollbar-thumb {
+    @extend %scrollThumb;
+  }
+
+  &::-webkit-scrollbar {
+    @extend %scrollBar;
+  }
 }
 
 .filterBox__header {
   margin: 0;
   width: 70%;
+  text-transform: uppercase;
   font-weight: normal;
+
+  @media(max-width: 1200px) {
+    font-size: 20px;
+  }
+
+  @media(max-width: 1090px) {
+    font-size: 17px;
+  }
+
+  @media(max-width: 1090px) {
+    font-size: 17px;
+  }
+
+  @media(max-width: $tablet-width) {
+    font-size: 16px;
+  }
+
+  @media(max-width: $mobile-width) {
+    font-size: 13px;
+  }
 }
 
 .filterBox__headerBtn {
@@ -102,6 +162,9 @@
   color: white;
   transform: rotate(90deg);
   transition: 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   svg {
     g {
@@ -117,6 +180,16 @@
       }
     }
   }
+
+  @media(max-width:$hideFilters-width) {
+    width: 2.5vw;
+    height: 2.5vw;
+  }
+
+  @media(max-width:$mobile-width) {
+    width: 3vw;
+    height: 3vw;
+  }
 }
 
 .filterBox__headerBtn_open {
@@ -126,6 +199,10 @@
 .filter__input {
   visibility: hidden;
   margin-right: 1.5em;
+
+  @media(max-width: $desktop-width) {
+    margin-right: 1em;
+  }
 }
 
 .filter__input + .filter__label::before {
@@ -136,6 +213,18 @@
   width: 26px;
   height: 26px;
   border-radius: 5px;
+
+  @media(max-width:1100px) {
+    width: 21px;
+    height: 21px;
+  }
+
+  @media(max-width: $desktop-width) {
+    width: 18px;
+    height: 18px;
+    top: 5%;
+    border-radius: 3px;
+  }
 }
 
 .filter__input:checked + .filter__label::after {
@@ -147,4 +236,10 @@
   height: 20px;
   top: 1%;
   left: 1.5%;
+
+  @media(max-width: $desktop-width) {
+    width: 14px;
+    top: 18%;
+    height: 14px;
+  }
 }

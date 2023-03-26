@@ -37,6 +37,11 @@ const CardList: React.FC = () => {
   // console.log(products);
   // setProducts(dataRes);
 
+  useEffect(() => {
+    dispatch(dataSlice.actions.setData(productData!));
+  }, [dispatch, productData]);
+
+  if (!productData) return null;
   return (
     <div
       className={
@@ -60,7 +65,7 @@ const CardList: React.FC = () => {
       ) : productData?.length === 0 ? (
         <h1 className={styles.mainContainer__noFound}>There is no products found &#128549;</h1>
       ) : (
-        productData?.map((product) =>
+        productData.map((product) =>
           isList ? (
             <ListCard
               description={product.description}

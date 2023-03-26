@@ -13,6 +13,7 @@ const AppRouter = () => {
       <Route path='/' element={<MainPage />} />
       <Route path='/cart' element={<CartPage />} />
       <Route path='/products/:id' element={<ProductPage />} />
+      <Route path='cart/products/:id' element={<ProductPage />} />
       <Route path='*' element={<ErrorPage />} />
     </Routes>
   );

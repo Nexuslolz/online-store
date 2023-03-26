@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 import styles from './Basket.module.scss';
 
 import { getCartList } from '../../store/selectors/cartSelector';
+import { IProductData } from '../Content/Cart/components/CartProduct/CartProduct';
 
 const Basket: React.FC = () => {
-  const cartList: string[] = useSelector(getCartList);
+  const cartList: IProductData[] = useSelector(getCartList);
   const amount = cartList.length;
 
   return (

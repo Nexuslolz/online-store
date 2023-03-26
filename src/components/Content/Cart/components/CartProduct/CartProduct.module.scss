@@ -1,0 +1,184 @@
+@import '../../../../../styles/variables.scss';
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  height: 200px;
+  margin: 2vw auto 4vw auto;
+  font-size: 14px;
+  width: 100%;
+  padding-left: 5%;
+
+  @media(max-width: $desktop-width) {
+    font-size: 12px;
+    height: 160px;
+  }
+
+  @media(max-width: $tablet-width) {
+    max-height: 130px;
+    height: 130px;
+  }
+
+  .card__infoWrapper {
+    @media(max-width:$tablet-width) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}
+
+.card__header {
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    text-shadow: 0 0 2px $activeColor;
+  }
+
+  @media(max-width: $desktop-width) {
+    font-size: 14px;
+  }
+
+  @media(max-width: $tablet-width) {
+    font-size: 11px;
+  }
+
+  @media(max-width: $mobile-width) {
+    font-size: 10px;
+  }
+}
+
+.card__description,
+.card__infoWrapper {
+  @media(max-width: $desktop-width) {
+    font-size: 12px;
+  }
+
+  @media(max-width: $tablet-width) {
+    font-size: 9px;
+  }
+
+  @media(max-width: $mobile-width) {
+    font-size: 8px;
+  }
+}
+
+.card__imgWrapper {
+  width: 100%;
+  max-width: 205px;
+  overflow: hidden;
+  cursor: pointer;
+
+
+  @media(max-width: 1200px) {
+    max-width: 180px;
+  }
+
+  @media(max-width: $tablet-width) {
+    max-width: 120px;
+  }
+
+  @media(max-width: $mobile-width) {
+    max-width: 100px;
+  }
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+
+  @media(max-width: $tablet-width) {
+    height: 85%;
+  }
+}
+
+.card__infoWrapper {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  @media(max-width: 750px) {
+    font-size: 8px;
+  }
+
+  @media(max-width: $mobile-width) {
+    font-size: 7px;
+  }
+}
+
+.card__infoItem {
+  font-weight: bold;
+}
+
+.card__oldPrice {
+  font-size: 0.9em;
+  color: gray;
+  text-decoration: line-through;
+
+    @media(max-width: $desktop-width) {
+    font-size: 9px;
+  }
+
+  @media(max-width: $tablet-width) {
+    font-size: 7px;
+  }
+
+  @media(max-width:$mobile-width) {
+    font-size: 6px;
+  }
+}
+
+.card__newPrice {
+  font-size: 1.4em;
+  font-weight: bold;
+
+    @media(max-width: $desktop-width) {
+    font-size: 14px;
+  }
+
+  @media(max-width: $tablet-width) {
+    font-size: 10px;
+  }
+
+  @media(max-width:$mobile-width) {
+    font-size: 9px;
+  }
+}
+
+.card__wrapperAbout {
+  width: 100%;
+}
+
+.card__headerWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.card .card__lazyLoader {
+  width: 12vw;
+  height: 12vw;
+  max-width: 175px;
+  max-height: 175px;
+
+  @media(max-width: $tablet-width) {
+    min-width: 105px;
+    min-height: 100px;
+  }
+
+  @media(max-width: $mobile-width) {
+    min-width: 90px;
+    min-height: 85px;
+  }
+}
