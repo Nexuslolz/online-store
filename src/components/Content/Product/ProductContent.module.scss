@@ -113,14 +113,11 @@ min-width: 100px;
   margin-bottom: 2em;
 
   &::-webkit-scrollbar {
-    width: 0.3vw;
-    background-color: $activeColor;
-    border-radius: 5px;
+    @extend %scrollBar;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $wrapColor;
-    border-radius: 5px;
+    @extend %scrollThumb;
   }
 
   @media(max-width: $desktop-width) {
