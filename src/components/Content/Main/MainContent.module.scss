@@ -1,0 +1,107 @@
+@import '../../../styles/variables.scss';
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  min-height: 100vh;
+  align-items: center;
+
+  @media (max-width: $hideFilters-width) {
+    width: 100%;
+  }
+}
+
+.mainContainer__panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 6px 5px #969696;
+  background-color: $wrapColor;
+  color: #fff;
+  transition: 0.3s;
+  color: white;
+  height: 100%;
+  padding: 0.7em 1em;
+  margin-bottom: 2em;
+  min-width: 255px;
+}
+
+.btn__bigger {
+  background-image: url('../../../assets/ico/bigger.svg');
+  @extend %ShowBtnPanel;
+}
+
+.btn__smaller {
+  background-image: url('../../../assets/ico/smaller.svg');
+  @extend %ShowBtnPanel;
+}
+
+.showBtn__panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10%;
+  width: 10%;
+  justify-content: center;
+  margin-right: 10px;
+
+  @media(max-width: 650px) {
+    display: none;
+  }
+}
+
+.mainContainer__text {
+  width: 9vw;
+  text-align: center;
+}
+
+.found {
+  visibility: visible;
+}
+.no {
+  visibility: hidden;
+}
+
+.mainContainer__text {
+  @media(max-width:1100px) {
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+  }
+
+  @media(max-width: $desktop-width) {
+    display: none;
+  }
+}
+
+.disableBtn {
+  display: none;
+}
+
+@keyframes endBtn {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+}
+
+.endBtn {
+  opacity: 0;
+  visibility: hidden;
+  animation: endBtn 1s 1 linear;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+}

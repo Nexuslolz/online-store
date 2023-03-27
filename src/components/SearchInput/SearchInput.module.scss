@@ -1,0 +1,126 @@
+@import '../../styles/variables.scss';
+
+.search {
+  position: relative;
+  display: flex;
+  height: 40%;
+  transition: 0.2s;
+
+  margin: 0 15px;
+  padding: 5px 5px 5px 10px;
+
+  background-color: $bgFieldColor;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  min-width: 220px;
+  width: 100%;
+
+  @media(max-width: $desktop-width) {
+    min-width: 190px;
+  }
+
+  @media(max-width: $tablet-width) {
+    padding: 0.15em 0;
+    margin: 0;
+    min-width: 150px;
+    font-size: 12px;
+    height: 24px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+
+    top: 20%;
+    left: 14px;
+
+    width: 18px;
+    height: 18px;
+
+    background-image: url('../../assets/ico/search.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    opacity: 0.4;
+
+    @media(max-width: $tablet-width) {
+      display: none;
+    }
+  }
+
+  &__input {
+    flex-grow: 1;
+
+    padding-left: 30px;
+    width: 80%;
+    font: inherit;
+
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    @media (max-width: 1100px) {
+      width: 50%;
+    }
+
+    @media(max-width: $tablet-width) {
+      padding-left: 10px;
+    }
+  }
+
+  &__clean {
+    width: 18px;
+    height: 18px;
+
+    margin: auto 5px;
+
+    background-image: url('../../assets/ico/close.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    transition: 0.2s;
+    opacity: 0.5;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+
+    @media(max-width: $tablet-width) {
+      background-size: 70%;
+    }
+
+    @media(max-width: $mobile-width) {
+      margin: auto 0px;
+      background-size: 65%;
+
+    }
+  }
+
+  &__find {
+    font: inherit;
+    padding: 0 10px;
+
+    background-color: transparent;
+    border: none;
+    transition: 0.2s;
+    opacity: 0.7;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+
+    @media(max-width:$tablet-width) {
+      padding: 0 3px;
+    }
+  }
+
+  &__hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+}

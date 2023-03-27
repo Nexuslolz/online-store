@@ -1,0 +1,33 @@
+@import '../../styles/variables.scss';
+
+.select{
+  background-color: $bgFieldColor;
+  border-radius: 5px;
+  border: 1px solid #ccc !important;
+  border: none;
+  padding: 0.3em 1em;
+  transition: 0.15s;
+  outline: none;
+  flex-grow: 0.2;
+  font-size: 16px;
+  width: 10vw;
+  min-width: 105px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    border: 1px solid $activeColor !important;
+  }
+
+  @media(max-width:$tablet-width) {
+    font-size: 12px;
+    min-width: 90px;
+  }
+
+  @media(max-width:$mobile-width) {
+    min-width: 70px;
+    padding: 0.3em 0.3em;
+  }
+}

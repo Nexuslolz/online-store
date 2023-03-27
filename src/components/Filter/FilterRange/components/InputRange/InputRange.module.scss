@@ -1,0 +1,88 @@
+@import '../../../../../styles/variables.scss';
+
+.filterInputWrapper {
+  position: relative;
+  min-height: 20px;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.filter__input {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  background-color: #C6C6C6;
+  pointer-events: none;
+}
+
+.inputMin{
+  z-index: 1;
+  height: 0;
+}
+
+.inputMax {
+  background: linear-gradient(
+    to right,
+    rgb(198, 198, 198) 0%,
+    rgb(198, 198, 198) 0%,
+    $activeColor 0%,
+    $activeColor 100%,
+    rgb(198, 198, 198) 100%,
+    rgb(198, 198, 198) 100%
+  );
+  z-index: 0;
+}
+
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  pointer-events: all;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #C6C6C6;
+  transition: 0.2s;
+  cursor: pointer;
+      &:hover {
+          background: #f7f7f7;
+      }
+      &:active {
+          box-shadow: inset 0 0 3px $activeColor, 0 0 9px $activeColor;
+          -webkit-box-shadow: inset 0 0 3px $activeColor, 0 0 9px $activeColor;
+      }
+
+      @media(max-width:1090px) {
+        width: 16px;
+        height: 16px;
+      }
+
+      @media(max-width: $mobile-width) {
+        width: 14px;
+        height: 14px;
+      }
+}
+
+input[type=range]::-moz-range-thumb {
+  pointer-events: all;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #C6C6C6;
+  transition: 0.2s;
+  cursor: pointer;
+      &:hover {
+          background: #f7f7f7;
+      }
+      &:active {
+          box-shadow: inset 0 0 3px $activeColor, 0 0 9px $activeColor;
+          -webkit-box-shadow: inset 0 0 3px $activeColor, 0 0 9px $activeColor;
+        }
+}
+
+#from-slider {
+  height: 0;
+  z-index: 1;
+}
