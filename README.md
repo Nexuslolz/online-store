@@ -1,6 +1,7 @@
 # Bender Store
 ### Ссылка на прототип:
 
+https://bender-store.netlify.app/
 
 ## Preview
 
