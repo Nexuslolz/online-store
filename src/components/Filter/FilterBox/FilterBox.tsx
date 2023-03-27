@@ -7,10 +7,14 @@ import ArrowFilter from '../../Icons/ArrowFilter/ArrowFilter';
 interface IFilter {
   header: string;
   name: string;
-  options: string[];
+  options: {
+    name: string;
+    checked: boolean;
+  }[];
+  onChange(value: string): void;
 }
 
-const FilterBox: React.FC<IFilter> = ({ ...props }: IFilter) => {
+const FilterBox: React.FC<IFilter> = (props: IFilter) => {
   const [openList, setOpenList] = useState<boolean>(false);
 
   return (
@@ -36,17 +40,21 @@ const FilterBox: React.FC<IFilter> = ({ ...props }: IFilter) => {
         }
       >
         <ul className={openList ? `${styles.filterBoxList} ${styles.filterBoxList_open}` : styles.filterBoxList}>
-          {props.options.map((option, i) => (
+          {props.options.map(({ name, checked }, i) => (
             <li className={styles.filterBoxList__item} key={i}>
               <div className={styles.filterBoxList__input}>
-                <input className={styles.filter__input} name={props.name} id={option} type='checkbox' />
-                <label className={styles.filter__label} htmlFor={option}>
-                  {option}
+                <input
+                  onChange={() => props.onChange(name)}
+                  className={styles.filter__input}
+                  checked={checked}
+                  name={props.name}
+                  id={name}
+                  type='checkbox'
+                />
+                <label className={styles.filter__label} htmlFor={name}>
+                  {name}
                 </label>
               </div>
-              {/* <div className={styles.filterBoxList__value}>
-                <span>15</span> / <span>15</span>
-              </div> */}
             </li>
           ))}
         </ul>

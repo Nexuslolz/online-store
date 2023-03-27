@@ -1,6 +1,7 @@
 import React from 'react';
 
 import InputNumber from './components/InputNumber/InputNumber';
+
 import InputRange from './components/InputRange/InputRange';
 
 import styles from './FilterRange.module.scss';
@@ -12,6 +13,7 @@ interface IFilterRange {
   valueMax: string;
   min: string;
   max: string;
+  onChange(): void;
 }
 
 const FilterRange: React.FC<IFilterRange> = ({ ...props }: IFilterRange) => {
@@ -24,8 +26,15 @@ const FilterRange: React.FC<IFilterRange> = ({ ...props }: IFilterRange) => {
         valueMin={props.valueMin}
         valueMax={props.valueMax}
         name={props.name}
+        onChange={props.onChange}
       />
-      <InputNumber min={props.min} max={props.max} valueMin={props.valueMin} valueMax={props.valueMax} />
+      <InputNumber
+        onChange={() => console.log('1')}
+        min={props.min}
+        max={props.max}
+        valueMin={props.valueMin}
+        valueMax={props.valueMax}
+      />
     </div>
   );
 };

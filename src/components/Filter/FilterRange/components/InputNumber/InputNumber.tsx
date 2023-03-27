@@ -7,6 +7,7 @@ interface IInputNumber {
   max: string;
   valueMin: string;
   valueMax: string;
+  onChange(): void;
 }
 
 const InputNumber: React.FC<IInputNumber> = ({ ...props }: IInputNumber) => {
@@ -15,6 +16,7 @@ const InputNumber: React.FC<IInputNumber> = ({ ...props }: IInputNumber) => {
       <div className={`${styles.filter__value} ${styles.valueMin}`}>
         <h4 className={`${styles.filter__subheader} ${styles.valueMin__header}`}>MIN</h4>
         <input
+          onChange={() => console.log('2')}
           className={styles.valueMin__input}
           type='number'
           min={props.min}
@@ -26,6 +28,7 @@ const InputNumber: React.FC<IInputNumber> = ({ ...props }: IInputNumber) => {
       <div className={`${styles.filter__value} ${styles.valueMax}`}>
         <h4 className={`${styles.filter__subheader} ${styles.valueMax__header}`}>MAX</h4>
         <input
+          onChange={() => console.log('3')}
           className={styles.valueMin__input}
           type='number'
           min={props.min}

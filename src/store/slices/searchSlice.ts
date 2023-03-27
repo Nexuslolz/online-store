@@ -6,12 +6,14 @@ interface ISearch {
   searchValue: IProduct[] | null;
   loading: boolean;
   error: string;
+  param: string;
 }
 
 const initialState: ISearch = {
   searchValue: null,
   loading: false,
   error: '',
+  param: '',
 };
 
 export const searchSlice = createSlice({
@@ -29,6 +31,9 @@ export const searchSlice = createSlice({
     },
     setSearchError(state, action) {
       state.error = action.payload;
+    },
+    setSearchParam(state, action: PayloadAction<string>) {
+      state.param = action.payload;
     },
   },
 });

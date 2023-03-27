@@ -7,51 +7,32 @@ import styles from './CardList.module.scss';
 import { IProduct } from '../../../../../models/models';
 import { getIsList } from '../../../../../store/selectors/listSelector';
 import { getSearchParams } from '../../../../../store/selectors/searchSelector';
-import { useFetchProductsQuery } from '../../../../../store/services/productService.api';
 
-import { dataSlice } from '../../../../../store/slices/dataSlice';
 import { totalSlice } from '../../../../../store/slices/totalSlice';
 import Card from '../../../../Card/Card';
 import ListCard from '../../../../Card/ListCard/ListCard';
 import Loader from '../../../../Loader/MainLoader/MainLoader';
 
-const CardList: React.FC = () => {
-  const { data, isLoading, error } = useFetchProductsQuery('100');
+interface ICardList {
+  products: IProduct[];
+}
+
+const CardList: React.FC<ICardList> = ({ products }: ICardList) => {
   const isList: boolean = useSelector(getIsList);
-
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(totalSlice.actions.setAmount(String(data?.products.length)));
-  }, [data, dispatch]);
 
   const [searchData, searchLoading, searchError] = useSelector(getSearchParams);
 
-  const productData: IProduct[] | undefined = searchData ?? data?.products;
+  const productData: IProduct[] = searchData ?? products;
 
   useEffect(() => {
-    dispatch(dataSlice.actions.setData(productData!));
-  }, [dispatch, productData]);
+    dispatch(totalSlice.actions.setAmount(String(productData.length)));
+  }, [dispatch, productData.length]);
 
-  if (!productData) return null;
   return (
-    <div
-      className={
-        isLoading
-          ? isList
-            ? styles.mainContainer__cardList_list_loading
-            : styles.mainContainer__cardList_loading
-          : isList
-          ? styles.mainContainer__cardList_list
-          : styles.mainContainer__cardList
-      }
-    >
-      {isLoading || searchLoading ? (
+    <div className={isList ? styles.mainContainer__cardList_list : styles.mainContainer__cardList}>
+      {searchLoading ? (
         <Loader />
-      ) : error ? (
-        <h1 className={styles.mainContainer__error}>
-          Error has occured. {'status' in error ? error.status : error.message}. Try again later.
-        </h1>
       ) : searchError ? (
         <h1 className={styles.mainContainer__error}>Error has occured, {searchError}</h1>
       ) : productData?.length === 0 ? (
