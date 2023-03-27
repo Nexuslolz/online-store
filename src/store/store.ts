@@ -6,6 +6,7 @@ import { dataSlice } from './slices/dataSlice';
 import { listSlice } from './slices/listSlice';
 import { menuSlice } from './slices/menuSlice';
 import { searchSlice } from './slices/searchSlice';
+import { sortSlice } from './slices/sortSlice';
 import { totalSlice } from './slices/totalSlice';
 
 const rootReducer = combineReducers({
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   search: searchSlice.reducer,
   menu: menuSlice.reducer,
   data: dataSlice.reducer,
+  sort: sortSlice.reducer,
 });
 
 export const setupStore = () => {

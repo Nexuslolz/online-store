@@ -1,42 +1,22 @@
-import React, { useCallback, useEffect } from 'react';
+import 'rc-slider/assets/index.css';
+import React, { ComponentProps, useCallback } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import FilterBox from './FilterBox/FilterBox';
 import styles from './FilterPanel.module.scss';
-import FilterRange from './FilterRange/FilterRange';
+// import FilterRange from './FilterRange/FilterRange';
 
-import { getData } from '../../store/selectors/dataSelector';
 import { getIsOpen } from '../../store/selectors/menuSelector';
 import { listSlice } from '../../store/slices/listSlice';
 import { menuSlice } from '../../store/slices/menuSlice';
+import { searchSlice } from '../../store/slices/searchSlice';
+import { sortSlice } from '../../store/slices/sortSlice';
+import { RootState } from '../../store/store';
 import Button from '../Button/Button';
 import BtnShow from '../Content/Main/components/BtnShow/BtnShow';
 
 const FilterPanel: React.FC = () => {
-  const data = useSelector(getData);
-
-  const waitForData = (): [string[], string[], string, string, string, string] => {
-    try {
-      const categories = [...new Set(data.map((product) => product.category))];
-      const brands = [...new Set(data.map((product) => product.brand))];
-
-      const priceMaxValue = String(Math.max(...data.map((product) => product.price)));
-      // const stockMaxValue = String(Math.max(...data.map((product) => product.stock)));
-      // const priceMinValue = String(Math.min(...data.map((product) => product.price)));
-      // const stockMinValue = String(Math.min(...data.map((product) => product.stock)));
-
-      return [categories, brands, priceMaxValue, priceMinValue, stockMaxValue, stockMinValue];
-    } catch (error) {
-      const categories: string[] = ['...', '...', '...', '...'];
-      const brands: string[] = ['...', '...', '...', '...'];
-      console.error('Data was not already loading');
-
-      return [categories, brands, '0', '0', '0', '0'];
-    }
-  };
-  const [categories, brands, priceMaxValue, priceMinValue, stockMaxValue, stockMinValue] = waitForData();
-
   const dispatch = useDispatch();
   const isOpen = useSelector(getIsOpen);
 
@@ -44,6 +24,48 @@ const FilterPanel: React.FC = () => {
     if (isOpen) {
       dispatch(menuSlice.actions.setMenu(false));
     }
+  };
+
+  const allCategories = useSelector((state: RootState) => state.menu.available.categories);
+  const currentCategories = useSelector((state: RootState) => state.menu.current.categories);
+  const optionsCategories: ComponentProps<typeof FilterBox>['options'] = allCategories.map((name) => ({
+    name,
+    checked: currentCategories.includes(name),
+  }));
+
+  const allBrands = useSelector((state: RootState) => state.menu.available.brands);
+  const currentBrands = useSelector((state: RootState) => state.menu.current.brands);
+  const optionsBrands: ComponentProps<typeof FilterBox>['options'] = allBrands.map((name) => ({
+    name,
+    checked: currentBrands.includes(name),
+  }));
+
+  // const allPriceMin = useSelector((state: RootState) => state.menu.available.prices.min);
+  // const allPriceMax = useSelector((state: RootState) => state.menu.available.prices.max);
+  // const allStockMin = useSelector((state: RootState) => state.menu.available.stock.min);
+  // const allStockMax = useSelector((state: RootState) => state.menu.available.stock.max);
+
+  const onChangeCategory = (category: string) => {
+    dispatch(menuSlice.actions.toggleCategory(category));
+  };
+
+  const onChangeBrand = (brand: string) => {
+    dispatch(menuSlice.actions.toggleBrand(brand));
+  };
+
+  const resetFitlers = () => {
+    dispatch(searchSlice.actions.resetSearchValue());
+    dispatch(searchSlice.actions.setSearchParam(''));
+
+    dispatch(sortSlice.actions.setSort('default'));
+
+    currentCategories.map((category) => {
+      return dispatch(menuSlice.actions.toggleCategory(category));
+    });
+
+    currentBrands.map((brand) => {
+      return dispatch(menuSlice.actions.toggleBrand(brand));
+    });
   };
 
   const setCardGrid = useCallback(() => {
@@ -54,12 +76,12 @@ const FilterPanel: React.FC = () => {
     dispatch(listSlice.actions.setList(true));
   }, [dispatch]);
 
-  let num = 1230;
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    num += +priceMaxValue;
-  }, [priceMaxValue]);
+  // const price = () => {
+  //   console.log('price');
+  // };
+  // const stock = () => {
+  //   console.log('stock');
+  // };
 
   return (
     <>
@@ -73,11 +95,27 @@ const FilterPanel: React.FC = () => {
             <BtnShow additionalClass={styles.btn__smaller} onClick={setCardList} />
           </div>
         </div>
-        <Button text='reset' onClick={() => console.log('reset')} additionalClass={styles.filter__btn} />
-        <FilterBox name='Category-filter' header='Category' options={categories} />
-        <FilterBox name='Brand-filter' header='Brand' options={brands} />
-        <FilterRange title='Price' name='price' min={'1'} max={'123'} valueMin={'123'} valueMax={'12345'} />
-        <FilterRange title='Stock' name='stock' min={'123'} max={'1234'} valueMin={String(num)} valueMax={'1234'} />
+        <Button text='reset' onClick={resetFitlers} additionalClass={styles.filter__btn} />
+        <FilterBox onChange={onChangeCategory} name='Category-filter' header='Category' options={optionsCategories} />
+        <FilterBox onChange={onChangeBrand} name='Brand-filter' header='Brand' options={optionsBrands} />
+        {/* <FilterRange
+          title='Price'
+          name='price'
+          min={String(allPriceMin)}
+          max={String(allPriceMax)}
+          valueMin={String(allPriceMin)}
+          valueMax={String(allPriceMax)}
+          onChange={price}
+        />
+        <FilterRange
+          title='Stock'
+          name='stock'
+          min={String(allStockMin)}
+          max={String(allStockMax)}
+          valueMin={String(allStockMin)}
+          valueMax={String(allStockMax)}
+          onChange={stock}
+        /> */}
       </div>
       <div
         className={

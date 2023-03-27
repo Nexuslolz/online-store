@@ -13,7 +13,9 @@ interface ISelect {
 const Select: React.FC<ISelect> = ({ ...props }: ISelect) => {
   return (
     <select value={props.value} onChange={(sort) => props.onChange(sort.target.value)} className={styles.select}>
-      <option disabled={true}>Sorting ...</option>
+      <option value='default' disabled={true}>
+        Sorting ...
+      </option>
       {props.params.map((param, i) => (
         <option key={i} value={param.option}>
           {param.option}
