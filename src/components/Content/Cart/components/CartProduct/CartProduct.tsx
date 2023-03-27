@@ -25,6 +25,7 @@ export interface IProductData {
 
 const CartProduct: React.FC<ICard> = ({ id, setError, setLoading }: ICard) => {
   const { data, isLoading, isError } = useFetchOneProductQuery(String(id));
+
   const dispatch = useDispatch();
   const router = useNavigate();
 
@@ -80,7 +81,7 @@ const CartProduct: React.FC<ICard> = ({ id, setError, setLoading }: ICard) => {
     if (isLoading) {
       setLoading(true);
     }
-  }, [data, isLoading, setLoading]);
+  }, [isLoading, setLoading]);
 
   if (!data) return null;
   return (

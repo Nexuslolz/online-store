@@ -36,7 +36,28 @@ const CartContent: React.FC = () => {
 
   setTimeout(() => {
     setLoading(false);
-  }, 1200);
+  }, 400);
+
+  const [page, setPage] = useState<number>(1);
+  const productsOnPage: number = 4;
+  let start = (page - 1) * productsOnPage;
+  let end = start + productsOnPage;
+
+  const nextPage = () => {
+    if (page === Math.ceil(productsInCart.length / productsOnPage)) {
+      setPage(1);
+    } else {
+      setPage((prev) => prev + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (page === 1) {
+      setPage(Math.ceil(productsInCart.length / productsOnPage));
+    } else {
+      setPage((prev) => prev - 1);
+    }
+  };
 
   return (
     <div className={styles.cartContent__wrapper}>
@@ -44,13 +65,7 @@ const CartContent: React.FC = () => {
         <div className={styles.card__contentWrapper}>
           <div className={styles.card__contentHeader__wrapper}>
             <h2 className={styles.card__contentHeader}>Products in cart</h2>
-            <ContentSlider
-              prev='<'
-              next='>'
-              value='1'
-              onNext={() => console.log('next')}
-              onPrev={() => console.log('prev')}
-            />
+            <ContentSlider prev='<' next='>' value={String(page)} onNext={nextPage} onPrev={prevPage} />
           </div>
           <hr />
         </div>
@@ -59,7 +74,7 @@ const CartContent: React.FC = () => {
         ) : loading ? (
           <Loader />
         ) : (
-          productsInCart.map((product) => (
+          productsInCart.slice(start, end).map((product) => (
             <div className={styles.product__wrapper} key={product.id}>
               <CartProduct id={product.id} setError={fillError} setLoading={fillLoading} />
               <hr className={styles.devide} />
