@@ -8,7 +8,9 @@ import { IProduct } from '../../../../../models/models';
 import { getIsList } from '../../../../../store/selectors/listSelector';
 import { getSearchParams } from '../../../../../store/selectors/searchSelector';
 
+import { getSort } from '../../../../../store/selectors/sortSelector';
 import { totalSlice } from '../../../../../store/slices/totalSlice';
+import { sortingParams } from '../../../../../utils/sorting';
 import Card from '../../../../Card/Card';
 import ListCard from '../../../../Card/ListCard/ListCard';
 import Loader from '../../../../Loader/MainLoader/MainLoader';
@@ -23,7 +25,16 @@ const CardList: React.FC<ICardList> = ({ products }: ICardList) => {
 
   const [searchData, searchLoading, searchError] = useSelector(getSearchParams);
 
-  const productData: IProduct[] = searchData ?? products;
+  let productData: IProduct[] = searchData ?? products;
+
+  const sort = useSelector(getSort);
+  sortingParams.map((param) => {
+    if (sort === param.option) {
+      productData = param.sort([...productData]);
+      return productData;
+    }
+    return productData;
+  });
 
   useEffect(() => {
     dispatch(totalSlice.actions.setAmount(String(productData.length)));
