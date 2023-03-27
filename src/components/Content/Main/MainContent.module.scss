@@ -5,6 +5,7 @@
   flex-direction: column;
   width: 75%;
   min-height: 100vh;
+  align-items: center;
 
   @media (max-width: $hideFilters-width) {
     width: 100%;
@@ -78,4 +79,29 @@
   @media(max-width: $desktop-width) {
     display: none;
   }
+}
+
+.disableBtn {
+  display: none;
+}
+
+@keyframes endBtn {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+}
+
+.endBtn {
+  opacity: 0;
+  visibility: hidden;
+  animation: endBtn 1s 1 linear;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
 }
