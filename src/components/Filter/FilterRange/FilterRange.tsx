@@ -13,7 +13,7 @@ interface IFilterRange {
   valueMax: string;
   min: string;
   max: string;
-  onChange(): void;
+  onChange(event: number | number[]): void;
 }
 
 const FilterRange: React.FC<IFilterRange> = ({ ...props }: IFilterRange) => {

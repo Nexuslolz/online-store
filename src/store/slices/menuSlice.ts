@@ -83,17 +83,19 @@ export const menuSlice = createSlice({
       }
     },
 
-    changePriceMin(state, action: PayloadAction<number>) {
-      state.current.prices.min = action.payload;
+    changePrice(state, action: PayloadAction<number[]>) {
+      state.current.prices.min = action.payload[0];
+      state.current.prices.max = action.payload[1];
     },
-    changePriceMax(state, action: PayloadAction<number>) {
-      state.current.prices.max = action.payload;
+    // changePriceMax(state, action: PayloadAction<number>) {
+    //   state.current.prices.max = action.payload;
+    // },
+    changeStock(state, action: PayloadAction<number[]>) {
+      state.current.stock.min = action.payload[0];
+      state.current.stock.max = action.payload[1];
     },
-    changeStockMin(state, action: PayloadAction<number>) {
-      state.current.stock.min = action.payload;
-    },
-    changeStockMax(state, action: PayloadAction<number>) {
-      state.current.stock.max = action.payload;
-    },
+    // changeStockMax(state, action: PayloadAction<number>) {
+    //   state.current.stock.max = action.payload;
+    // },
   },
 });

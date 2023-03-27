@@ -10,7 +10,7 @@ interface IInputRange {
   valueMin: string;
   valueMax: string;
   name: string;
-  onChange(): void;
+  onChange(event: number | number[]): void;
 }
 
 const InputRange: React.FC<IInputRange> = ({ ...props }: IInputRange) => {
