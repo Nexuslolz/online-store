@@ -18,6 +18,16 @@
   }
 }
 
+.mainContainer__cardList_empty {
+  height: 100%;
+  width: 100%;
+  row-gap: 3em;
+  margin-bottom: 4em;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
 .mainContainer__cardList_list {
   display: flex;
   flex-direction: column;
