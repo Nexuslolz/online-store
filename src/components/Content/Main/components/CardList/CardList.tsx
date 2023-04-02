@@ -41,7 +41,15 @@ const CardList: React.FC<ICardList> = ({ products }: ICardList) => {
   }, [dispatch, productData.length]);
 
   return (
-    <div className={isList ? styles.mainContainer__cardList_list : styles.mainContainer__cardList}>
+    <div
+      className={
+        isList
+          ? styles.mainContainer__cardList_list
+          : searchError || productData?.length === 0 || searchLoading
+          ? styles.mainContainer__cardList_empty
+          : styles.mainContainer__cardList
+      }
+    >
       {searchLoading ? (
         <Loader />
       ) : searchError ? (
