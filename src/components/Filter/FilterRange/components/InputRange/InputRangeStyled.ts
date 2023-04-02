@@ -12,23 +12,5 @@ export const styled: { [key: string]: React.CSSProperties } = {
     border: 'none',
     position: 'absolute',
     marginTop: '-10px',
-
-    // ':hover': {
-    //   background: '#f7f7f7',
-    // },
-    //   &:active {
-    //       box-shadow: inset 0 0 3px $activeColor, 0 0 9px $activeColor,
-    //       -webkit-box-shadow: inset 0 0 3px $activeColor, 0 0 9px $activeColor,
-    //   }
-
-    //   @media(max-width:1090px) {
-    //     width: 16px,
-    //     height: 16px,
-    //   }
-
-    //   @media(max-width: $mobile-width) {
-    //     width: 14px,
-    //     height: 14px,
-    //   }
   },
 };

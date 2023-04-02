@@ -5,45 +5,27 @@ import styles from './InputRange.module.scss';
 import { styled } from './InputRangeStyled';
 
 interface IInputRange {
-  min: string;
-  max: string;
-  valueMin: string;
-  valueMax: string;
+  min: number;
+  max: number;
+  valueMin: number;
+  valueMax: number;
   name: string;
   onChange(event: number | number[]): void;
 }
 
-const InputRange: React.FC<IInputRange> = ({ ...props }: IInputRange) => {
+const InputRange: React.FC<IInputRange> = (props: IInputRange) => {
   return (
     <div className={styles.filterInputWrapper}>
       <Slider
         range
-        min={Number(props.min)}
-        max={Number(props.max)}
+        min={props.min}
+        max={props.max}
         trackStyle={{ backgroundColor: '#5ce77a' }}
         allowCross={false}
-        defaultValue={[Number(props.valueMin), Number(props.valueMax)]}
+        value={[props.valueMin, props.valueMax]}
         handleStyle={styled.handler}
         onChange={props.onChange}
       />
-      {/* <input
-        className={`${styles.filter__input} ${styles.inputMin}`}
-        type='range'
-        name={props.name}
-        id='from-slider'
-        min={props.min}
-        max={props.max}
-        defaultValue={props.valueMin}
-      />
-      <input
-        className={`${styles.filter__input} ${styles.inputMax}`}
-        type='range'
-        name={props.name}
-        id='to-slider'
-        min={props.min}
-        max={props.max}
-        defaultValue={props.valueMax}
-      /> */}
     </div>
   );
 };
