@@ -50,6 +50,10 @@ const MainContent: React.FC<IMainContentProps> = ({ allProducts }: IMainContentP
 
   const currentCategories = useSelector((state: RootState) => state.menu.current.categories);
   const currentBrands = useSelector((state: RootState) => state.menu.current.brands);
+  const currentPriceMin = useSelector((state: RootState) => state.menu.current.prices.min);
+  const currentPriceMax = useSelector((state: RootState) => state.menu.current.prices.max);
+  const currentStockMin = useSelector((state: RootState) => state.menu.current.stock.min);
+  const currentStockMax = useSelector((state: RootState) => state.menu.current.stock.max);
 
   let resultProducts = allProducts;
   if (currentCategories.length) {
@@ -64,8 +68,21 @@ const MainContent: React.FC<IMainContentProps> = ({ allProducts }: IMainContentP
     resultProducts = allProducts;
   }
 
+  // eslint-disable-next-line array-callback-return
+  resultProducts = resultProducts.filter((item) => {
+    if (currentPriceMin <= item.price && item.price <= currentPriceMax) {
+      return item;
+    }
+  });
+
+  // eslint-disable-next-line array-callback-return
+  resultProducts = resultProducts.filter((item) => {
+    if (currentStockMin <= item.stock && item.stock <= currentStockMax) {
+      return item;
+    }
+  });
   const isBtnAble = () => {
-    if (isFilterCategory.length !== 0 || isFilterBrand.length !== 0 || isSearch) {
+    if (isFilterCategory.length !== 0 || isFilterBrand.length !== 0 || isSearch || resultProducts.length < 20) {
       return true;
     }
     return false;
